@@ -1097,6 +1097,7 @@ int DLLEXPORT ENgettimeparam(int code, long *value)
       case EN_REPORTSTEP:   *value = Rstep;     break;
       case EN_REPORTSTART:  *value = Rstart;    break;
       case EN_STATISTIC:    *value = Tstatflag; break;
+      case EN_RULESTEP:     *value = Rulestep;  break; 
       case EN_PERIODS:      *value = Nperiods;  break;
       case EN_STARTTIME:    *value = Tstart;    break;  /* Added TNT 10/2/2009 */
       case EN_HTIME:        *value = Htime;     break;
@@ -1759,6 +1760,11 @@ int DLLEXPORT ENgetlinkvalue(int index, int code, EN_API_FLOAT_TYPE *value)
          
       case EN_LINKQUAL:
          v = avgqual(index) * Ucf[LINKQUAL];
+         break;
+
+      case EN_LINKPATTERN:
+         if (Link[index].Type == PUMP)
+            v = (double)Pump[PUMPINDEX(index)].Upat;
          break;
          
       default: return(251);
@@ -2561,6 +2567,40 @@ int  DLLEXPORT ENsetqualtype(int qualcode, char *chemname,
    return(0);
 }
 
+int DLLEXPORT ENgetheadcurve(int index, char *id)
+/*----------------------------------------------------------------
+**  Input:   index = index of pump in list of links
+**  Output:  id = head curve ID
+**  Returns: error code                              
+**  Purpose: retrieves ID of a head curve for specific link index
+**
+**  NOTE: 'id' must be able to hold MAXID characters
+**----------------------------------------------------------------
+*/
+{
+   strcpy(id,"");
+   if (!Openflag) return(102);
+   if (index < 1 || index > Nlinks || PUMP != Link[index].Type) return(204);
+   strcpy(id,Curve[Pump[PUMPINDEX(index)].Hcurve].ID);
+   return(0);
+}
+
+int DLLEXPORT ENgetpumptype(int index, int *type)
+/*----------------------------------------------------------------
+**  Input:   index = index of pump in list of links
+**  Output:  type = PumpType
+**  Returns: error code                              
+**  Purpose: retrieves type of a pump for specific link index
+**
+**----------------------------------------------------------------
+*/
+{
+   *type=-1;
+   if (!Openflag) return(102);
+   if (index < 1 || index > Nlinks || PUMP != Link[index].Type) return(204);
+   *type = Pump[PUMPINDEX(index)].Ptype;
+   return(0);
+}
 
 /*
 ----------------------------------------------------------------
