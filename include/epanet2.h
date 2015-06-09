@@ -18,6 +18,7 @@
 #ifndef EPANET2_H
 #define EPANET2_H
 
+/* for double-precision, set this as compile-time definition and #define just before including this header  */
 #ifndef EN_API_FLOAT_TYPE
 #define EN_API_FLOAT_TYPE float
 #endif
@@ -83,7 +84,8 @@
 #define EN_STATUS       11
 #define EN_SETTING      12
 #define EN_ENERGY       13
-#define EN_LINKQUAL     14     /* TNT */
+#define EN_LINKQUAL     14
+#define EN_LINKPATTERN  15
 
 #define EN_DURATION     0    /* Time parameters */
 #define EN_HYDSTEP      1
@@ -95,7 +97,7 @@
 #define EN_RULESTEP     7
 #define EN_STATISTIC    8
 #define EN_PERIODS      9
-#define EN_STARTTIME    10  /* Added TNT 10/2/2009 */
+#define EN_STARTTIME    10
 #define EN_HTIME        11
 #define EN_QTIME        12
 #define EN_HALTFLAG     13
