@@ -3,19 +3,15 @@
  **
  **   Implementation of a simple Hash Table for string storage & retrieval
  **
- **   Written by L. Rossman
- **   Last Updated on 6/19/03
+ **   Original version by L. Rossman
+ **   Updated by Open Water Analytics group
  **
  **   The hash table data structure (HTable) is defined in "hash.h".
  **   Interface Functions:
- **      HTcreate() - creates a hash table
- **      HTinsert() - inserts a string & its index value into a hash table
- **      HTfind()   - retrieves the index value of a string from a table
- **      HTfree()   - frees a hash table
- **
- *********************************************************************
- **   NOTE:  This is a modified version of the original HASH.C module.
- *********************************************************************
+ **      ENHashTablecreate() - creates a hash table
+ **      ENHashTableinsert() - inserts a string & its index value into a hash table
+ **      ENHashTablefind()   - retrieves the index value of a string from a table
+ **      ENHashTablefree()   - frees a hash table
  */
 
 #ifndef __APPLE__
@@ -26,6 +22,7 @@
 #include <string.h>
 #include "hash.h"
 
+/* djb2 hashing function "has excellent distribution and speed on many different sets of keys and table sizes" */
 unsigned int _enHash(char *str);
 unsigned int _enHash(char *str)
 {
