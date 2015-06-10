@@ -110,7 +110,7 @@ execute function x and set the error code equal to its return value.
 /*** New compile directives ***/                                               //(2.00.11 - LR)
 //#define CLE     /* Compile as a command line executable */
 //#define SOL     /* Compile as a shared object library   */
-#define DLL     /* Compile as a Windows DLL             */
+//#define DLL     /* Compile as a Windows DLL             */
 
 /*** Need to define WINDOWS to use the getTmpName function ***/                //(2.00.12 - LR)
 // --- define WINDOWS
@@ -130,7 +130,7 @@ execute function x and set the error code equal to its return value.
 #include <malloc.h>
 #endif
 #include <math.h>
-#include <float.h>                                                             //(2.00.12 - LR)
+#include <float.h>
  
 #include "text.h"
 #include "types.h"
@@ -138,7 +138,7 @@ execute function x and set the error code equal to its return value.
 #include "funcs.h"
 #define  EXTERN
 #include "vars.h"
-#include "..\include\epanet2.h"
+#include "epanet2.h"
 
 void (* viewprog) (char *);     /* Pointer to progress viewing function */   
 
@@ -904,8 +904,7 @@ int DLLEXPORT ENgetversion(int *v)
 } 
 
 
-int DLLEXPORT ENgetcontrol(int cindex, int *ctype, int *lindex,
-              EN_API_FLOAT_TYPE *setting, int *nindex, EN_API_FLOAT_TYPE *level)
+int DLLEXPORT ENgetcontrol(int cindex, int *ctype, int *lindex, EN_API_FLOAT_TYPE *setting, int *nindex, EN_API_FLOAT_TYPE *level)
 /*----------------------------------------------------------------
 **  Input:   cindex   = control index (position of control statement
 **                      in the input file, starting from 1) 
