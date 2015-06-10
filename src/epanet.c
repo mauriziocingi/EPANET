@@ -138,7 +138,7 @@ execute function x and set the error code equal to its return value.
 #include "funcs.h"
 #define  EXTERN
 #include "vars.h"
-#include "epanet2.h"
+#include <epanet2.h>
 
 void (* viewprog) (char *);     /* Pointer to progress viewing function */   
 
