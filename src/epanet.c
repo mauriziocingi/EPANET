@@ -1718,10 +1718,13 @@ int  DLLEXPORT ENgetcurve(int curveIndex, char* id, int *nValues, EN_API_FLOAT_T
 /*----------------------------------------------------------------
  **  Input:   curveIndex = curve index
  **  Output:  *nValues = number of points on curve
+ **           id = curve ID
  **           *xValues = values for x
  **           *yValues = values for y
  **  Returns: error code
- **  Purpose: retrieves end nodes of a specific link
+ **  Purpose: retrieves curve id, number of values and (x,y) values
+ **
+ **  NOTE: 'id' must be able to hold MAXID characters
  **----------------------------------------------------------------
  */
 {
@@ -1740,6 +1743,7 @@ int  DLLEXPORT ENgetcurve(int curveIndex, char* id, int *nValues, EN_API_FLOAT_T
     pointY[iPoint] = (EN_API_FLOAT_TYPE)y;
   }
   
+  strncpy(id,"", MAXID);
   strncpy(id, curve.ID, MAXID);
   *nValues = nPoints;
   *xValues = pointX;

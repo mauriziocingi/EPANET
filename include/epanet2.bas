@@ -5,7 +5,7 @@ Attribute VB_Name = "Module1"
 'Declarations of functions in the EPANET PROGRAMMERs TOOLKIT
 '(EPANET2.DLL)
 
-'Last updated on 4/3/07
+'Last updated on 11/MAY/15
 
 ' These are codes used by the DLL functions
 Global Const EN_ELEVATION = 0     ' Node parameters
@@ -204,9 +204,9 @@ Global Const EN_CUSTOM = 2        ' user-defined custom curve
  Declare Function ENgetlinknodes Lib "epanet2.dll" (ByVal Index As Long, Node1 As Long, Node2 As Long) As Long
  Declare Function ENgetlinkvalue Lib "epanet2.dll" (ByVal Index As Long, ByVal Code As Long, Value As Single) As Long
 
- 'Declare Function ENgetcurve Lib "epanet2.dll" (ByVal CurveIndex As Long, nValues As Long, xValues As Any, yValues As Any) As Long
- Declare Function ENgetheadcurve Lib "epanet2.dll" (ByVal Index As Long, ID As String) As Long  'ES
- Declare Function ENgetpumptype Lib "epanet2.dll" (ByVal Index As Long, PumpType As Long) As Long  'ES
+ Declare Function ENgetcurve Lib "epanet2.dll" (ByVal CurveIndex As Long, ByVal ID As String, nValues As Long, xValues As Any, yValues As Any) As Long
+ Declare Function ENgetheadcurve Lib "epanet2.dll" (ByVal Index As Long, ID As String) As Long
+ Declare Function ENgetpumptype Lib "epanet2.dll" (ByVal Index As Long, PumpType As Long) As Long
 
  Declare Function ENgetversion Lib "epanet2.dll" (Value As Long) As Long
 
