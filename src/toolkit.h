@@ -15,6 +15,9 @@ AUTHOR:     L. Rossman
 *******************************************************************
 */
 
+#ifndef EN_API_FLOAT_TYPE
+#define EN_API_FLOAT_TYPE float
+#endif
 
 #ifndef DLLEXPORT
   #ifdef DLL
@@ -93,8 +96,9 @@ AUTHOR:     L. Rossman
 #define EN_PERIODS      9
 #define EN_STARTTIME    10  /* Added TNT 10/2/2009 */
 #define EN_HTIME        11
-#define EN_HALTFLAG     12
-#define EN_NEXTEVENT    13
+#define EN_QTIME        12
+#define EN_HALTFLAG     13
+#define EN_NEXTEVENT    14
 
 #define EN_ITERATIONS     0
 #define EN_RELATIVEERROR  1
@@ -216,13 +220,14 @@ extern "C" {
  int  DLLEXPORT ENgetpatternvalue(int, int, float *);
  int  DLLEXPORT ENgetqualtype(int *, int *);
  int  DLLEXPORT ENgeterror(int, char *, int);
- int  DLLEXPORT ENgetstatistic(int code, int* value);
+ int  DLLEXPORT ENgetstatistic(int code, EN_API_FLOAT_TYPE* value);
 
  int  DLLEXPORT ENgetnodeindex(char *, int *);
  int  DLLEXPORT ENgetnodeid(int, char *);
  int  DLLEXPORT ENgetnodetype(int, int *);
  int  DLLEXPORT ENgetnodevalue(int, int, float *);
-
+ int  DLLEXPORT ENgetcoord(int index, EN_API_FLOAT_TYPE *x, EN_API_FLOAT_TYPE *y);
+ 
  int  DLLEXPORT ENgetnumdemands(int, int *);
  int  DLLEXPORT ENgetbasedemand(int, int, float *);
  int  DLLEXPORT ENgetdemandpattern(int, int, int *);
@@ -233,7 +238,7 @@ extern "C" {
  int  DLLEXPORT ENgetlinknodes(int, int *, int *);
  int  DLLEXPORT ENgetlinkvalue(int, int, float *);
  
- int  DLLEXPORT ENgetcurve(int curveIndex, int *nValues, float **xValues, float **yValues);
+ int  DLLEXPORT ENgetcurve(int curveIndex, char* id, int *nValues, EN_API_FLOAT_TYPE **xValues, EN_API_FLOAT_TYPE **yValues);
  int  DLLEXPORT ENgetheadcurve(int, char *);
  int  DLLEXPORT ENgetpumptype(int, int *);
 

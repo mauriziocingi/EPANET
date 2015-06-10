@@ -6,6 +6,7 @@
 *.map
 *.exp
 *.lib
+*.bak
 
 # Compiled Dynamic libraries
 *.so

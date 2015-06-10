@@ -107,6 +107,11 @@ execute function x and set the error code equal to its return value.
 *******************************************************************************
 */
 
+/*** New compile directives ***/                                               //(2.00.11 - LR)
+//#define CLE     /* Compile as a command line executable */
+//#define SOL     /* Compile as a shared object library   */
+#define DLL     /* Compile as a Windows DLL             */
+
 /*** Need to define WINDOWS to use the getTmpName function ***/                //(2.00.12 - LR)
 // --- define WINDOWS
 #undef WINDOWS
@@ -133,7 +138,7 @@ execute function x and set the error code equal to its return value.
 #include "funcs.h"
 #define  EXTERN
 #include "vars.h"
-#include "epanet2.h"
+#include "toolkit.h"
 
 void (* viewprog) (char *);     /* Pointer to progress viewing function */   
 
@@ -1141,7 +1146,7 @@ int DLLEXPORT ENgetpatternvalue(int index, int period, EN_API_FLOAT_TYPE *value)
 }
 
 
-int  DLLEXPORT ENgetqualtype(int *qualcode, int *tracenode)
+int DLLEXPORT ENgetqualtype(int *qualcode, int *tracenode)
 /*----------------------------------------------------------------
 **  Input:   none
 **  Output:  *qualcode  = WQ analysis code number (see TOOLKIT.H)
@@ -3322,11 +3327,12 @@ int DLLEXPORT ENgetaveragepatternvalue(int index, EN_API_FLOAT_TYPE *value)
  **           and pattern
  **----------------------------------------------------------------
  */
-{  *value = 0.0;
+{ 
+  int i;
+  *value = 0.0;
   if (!Openflag) return(102);
   if (index < 1 || index > Npats) return(205);
   //if (period < 1 || period > Pattern[index].Length) return(251);
-  int i;
   for (i=0; i<Pattern[index].Length; i++) {
     *value+=Pattern[index].F[i];
   }

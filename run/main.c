@@ -13,6 +13,14 @@ void  writeConsole(char *s);
 
 extern char Warnflag;
 
+/*
+----------------------------------------------------------------
+   Entry point used to compile a stand-alone executable.
+----------------------------------------------------------------
+*/
+
+#ifdef CLE                                                                     //(2.00.11 - LR)
+
 int   main(int argc, char *argv[])
 /*--------------------------------------------------------------
  **  Input:   argc    = number of command line arguments
@@ -60,6 +68,7 @@ int   main(int argc, char *argv[])
   }
   return(0);
 }                                       /* End of main */
+#endif
 
 
 void  writeConsole(char *s)
