@@ -711,7 +711,7 @@ void  writeline(char *s)
       if (LineNum == (long)PageSize)
       {
          PageNum++;
-         if (fprintf(RptFile,FMT82,PageNum,Title[0]) == EOF)
+         if (fprintf(RptFile,FMT82,(int)PageNum,Title[0]) == EOF)
             Fprinterr = TRUE;
          LineNum = 3;
       }
@@ -1187,9 +1187,9 @@ char *clocktime(char *atime, long seconds)
 {
 /*** Updated 6/24/02 ***/
     int h,m,s;
-    h = seconds/3600;
+    h = (int)seconds / 3600;
     m = (seconds % 3600) / 60;
-    s = seconds - 3600*h - 60*m;
+    s = (int)seconds - 3600*h - 60*m;
     sprintf(atime, "%01d:%02d:%02d", h,m,s);
     return(atime);
 }                        /* End of clocktime */

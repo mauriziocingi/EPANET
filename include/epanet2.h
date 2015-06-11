@@ -264,4 +264,4 @@ extern "C" {
 }
 #endif
 
-#endif //TOOLKIT_H
+#endif //def EPANET2_H

@@ -1,10 +1,3 @@
-//
-//  main.c
-//  runepanet
-//
-//
-//
-
 #include <stdio.h>
 #include "epanet2.h"
 #include "text.h"
@@ -19,7 +12,6 @@ extern char Warnflag;
 ----------------------------------------------------------------
 */
 
-#ifdef CLE                                                                     //(2.00.11 - LR)
 
 int   main(int argc, char *argv[])
 /*--------------------------------------------------------------
@@ -68,7 +60,6 @@ int   main(int argc, char *argv[])
   }
   return(0);
 }                                       /* End of main */
-#endif
 
 
 void  writeConsole(char *s)

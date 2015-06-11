@@ -3031,11 +3031,12 @@ char* getTmpName(char* fname)
 //  Purpose: creates a temporary file name with path prepended to it.
 //
 {
-    char name[MAXFNAME+1];
-    int  n;
+  
 
     // --- for Windows systems:
     #ifdef WINDOWS
+      char name[MAXFNAME+1];
+      int  n;
       // --- use system function tmpnam() to create a temporary file name
       tmpnam(name);
 
