@@ -1783,14 +1783,19 @@ int  DLLEXPORT ENgetcurve(int curveIndex, char* id, int *nValues, EN_API_FLOAT_T
  **----------------------------------------------------------------
  */
 {
-  int err = 0;
+  int iPoint, nPoints;
+  Scurve curve;
+  EN_API_FLOAT_TYPE *pointX, *pointY;
   
-  Scurve curve = Curve[curveIndex];
-  int nPoints = curve.Npts;
+/* Check that input file opened */
+   if (!Openflag) return(102);
   
-  EN_API_FLOAT_TYPE *pointX = calloc(nPoints, sizeof(EN_API_FLOAT_TYPE));
-  EN_API_FLOAT_TYPE *pointY = calloc(nPoints, sizeof(EN_API_FLOAT_TYPE));
-  int iPoint;
+  curve = Curve[curveIndex];
+  nPoints = curve.Npts;
+  
+  pointX = calloc(nPoints, sizeof(EN_API_FLOAT_TYPE));
+  pointY = calloc(nPoints, sizeof(EN_API_FLOAT_TYPE));
+  
   for (iPoint = 0; iPoint < nPoints; iPoint++) {
     double x = curve.X[iPoint] * Ucf[LENGTH];
     double y = curve.Y[iPoint] * Ucf[VOLUME];
@@ -1804,7 +1809,7 @@ int  DLLEXPORT ENgetcurve(int curveIndex, char* id, int *nValues, EN_API_FLOAT_T
   *xValues = pointX;
   *yValues = pointY;
   
-  return err;
+  return(0);
 }
 
 
