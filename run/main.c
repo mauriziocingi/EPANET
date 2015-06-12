@@ -6,13 +6,6 @@ void  writeConsole(char *s);
 
 extern char Warnflag;
 
-/*
-----------------------------------------------------------------
-   Entry point used to compile a stand-alone executable.
-----------------------------------------------------------------
-*/
-
-
 int   main(int argc, char *argv[])
 /*--------------------------------------------------------------
  **  Input:   argc    = number of command line arguments

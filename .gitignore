@@ -3,8 +3,10 @@
 *.lo
 *.o
 
-# Compiled Dynamic libraries
+# Compiled Dynamic libraries and executables
 *.so
+*.dll
+*.exe
 
 # Compiled Static libraries
 *.lai
