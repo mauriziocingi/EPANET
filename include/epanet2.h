@@ -18,27 +18,39 @@
 #ifndef EPANET2_H
 #define EPANET2_H
 
+/* for double-precision, set this as compile-time definition and #define just before including this header  */
 #ifndef EN_API_FLOAT_TYPE
 #define EN_API_FLOAT_TYPE float
 #endif
 
+// --- define WINDOWS
+#undef WINDOWS
+#ifdef _WIN32
+  #define WINDOWS
+#endif
+#ifdef __WIN32__
+  #define WINDOWS
+#endif
+
+// --- define DLLEXPORT
 #ifndef DLLEXPORT
-#ifdef DLL
-#ifdef __cplusplus
-#define DLLEXPORT extern "C" __declspec(dllexport)
-#else
-#define DLLEXPORT __declspec(dllexport)
+  #ifdef WINDOWS
+    #ifdef __cplusplus
+      #define DLLEXPORT extern "C" __declspec(dllexport)
+    #else
+      #define DLLEXPORT __declspec(dllexport) __stdcall
+  #endif // __cplusplus
+  #elif defined(CYGWIN)
+    #define DLLEXPORT __stdcall
+  #elif defined(__APPLE__)
+    #ifdef __cplusplus
+    #define DLLEXPORT
+    #else
+    #define DLLEXPORT
+    #endif
+  #endif
 #endif
-#elif defined(CYGWIN)
-#define DLLEXPORT __stdcall
-#else
-#ifdef __cplusplus
-#define DLLEXPORT
-#else
-#define DLLEXPORT
-#endif
-#endif
-#endif
+
 // --- Define the EPANET toolkit constants
 
 #define EN_ELEVATION    0    /* Node parameters */
@@ -84,6 +96,7 @@
 #define EN_SETTING      12
 #define EN_ENERGY       13
 #define EN_LINKQUAL     14     /* TNT */
+#define EN_LINKPATTERN  15
 
 #define EN_DURATION     0    /* Time parameters */
 #define EN_HYDSTEP      1
@@ -172,6 +185,9 @@
 
 #define EN_INITFLOW    10   /* Re-initialize flows flag  */
 
+#define EN_CONST_HP     0   /* constant horsepower       */
+#define EN_POWER_FUNC   1   /* power function            */
+#define EN_CUSTOM       2   /* user-defined custom curve */
 
 // --- Declare the EPANET toolkit functions
 #if defined(__cplusplus)
@@ -237,7 +253,8 @@ extern "C" {
   int  DLLEXPORT ENgetlinkvalue(int index, int code, EN_API_FLOAT_TYPE *value);
   
   int  DLLEXPORT ENgetcurve(int curveIndex, char* id, int *nValues, EN_API_FLOAT_TYPE **xValues, EN_API_FLOAT_TYPE **yValues);
-
+  int  DLLEXPORT ENgetheadcurve(int curveIndex, char *id);
+  int  DLLEXPORT ENgetpumptype(int pumpIndex, int *type);
   
   int  DLLEXPORT ENgetversion(int *version);
   
@@ -258,4 +275,4 @@ extern "C" {
 }
 #endif
 
-#endif //TOOLKIT_H
+#endif //def EPANET2_H

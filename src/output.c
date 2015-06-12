@@ -71,9 +71,9 @@ int  savenetdata()
       ibuf[9] = Flowflag;
       ibuf[10] = Pressflag;
       ibuf[11] = Tstatflag;
-      ibuf[12] = Rstart;
-      ibuf[13] = Rstep;
-      ibuf[14] = Dur;
+      ibuf[12] = (int)Rstart;
+      ibuf[13] = (int)Rstep;
+      ibuf[14] = (int)Dur;
       fwrite(ibuf,sizeof(INT4),15,OutFile);
 
       /* Write string variables to OutFile */
@@ -148,7 +148,7 @@ int  savehyd(long *htime)
    if ( x == NULL ) return 101;
 
    /* Save current time (htime) */
-   t = *htime;
+   t = (int)*htime;
    fwrite(&t,sizeof(INT4),1,HydFile);
 
    /* Save current nodal demands (D) */
@@ -196,7 +196,7 @@ int  savehydstep(long *hydstep)
 {
    INT4 t;
    int errcode = 0;
-   t = *hydstep;
+   t = (int)*hydstep;
    if (fwrite(&t,sizeof(INT4),1,HydFile) < 1) errcode = 308;
    if (t == 0) fputc(EOFMARK, HydFile);
    fflush(HydFile); /* added TNT */

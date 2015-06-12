@@ -470,8 +470,7 @@ AUTHOR:     L. Rossman
 #define ERR211 "Input Error 211: illegal %s value for Link %s."
 #define ERR212 "Input Error 212: trace node %.0s %s is undefined."
 #define ERR213 "Input Error 213: illegal option value in [%s] section:"
-#define ERR214 \
- "Input Error 214: following line of [%s] section contains too many characters:"
+#define ERR214 "Input Error 214: following line of [%s] section contains too many characters:"
 #define ERR215 "Input Error 215: %s %s is a duplicate ID."
 #define ERR216 "Input Error 216: %s data specified for undefined Pump %s."
 #define ERR217 "Input Error 217: invalid %s data for Pump %s."
