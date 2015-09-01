@@ -73,6 +73,14 @@ The PMC Chair is a single individual, voted for by the PMC members. Once someone
 
 The PMC Chair has no additional authority over other members of the PMC: the role is one of coordinator and facilitator. The Chair is also expected to ensure that all governance processes are adhered to, and has the casting vote when the project fails to reach consensus.
 
+####STEERING COMMITTEE
+
+An initial Steering Committee was formed to oversee the creation of the EPANET Open Source project, liaise with stakeholders, represent the project to the water distribution systems community and act as a sounding board for the PMC. Members of the Steering Committee have no direct functions or powers in the governance structure, except as individual members of one of the normal governance categories.
+
+The initial Steering Committee is made up of the ASCE-EWRI Water Distribution Systems Analysis (WDSA) Standing Committee chair and prominent members of the WDSA community from across the globe. The chair of the Project Management Committee is an ad-hoc member of the initial Steering Committee.
+
+The initial Steering Committee will develop and propose bylaws, receive community input and put them into action to solidify the project structure and governance, including the role and makeup of a permanent Steering Committee (should there be a need for this).
+
 ####Support
 All participants in the community are encouraged to provide support for new users within the project management infrastructure. This support is provided as a way of growing the community. Those seeking support should recognise that all support activity within the project is voluntary and is therefore provided as and when time allows.
 
