@@ -1,0 +1,40 @@
+\section{Prolog}
+
+\begin{tabular}{|l|c|r|}
+\hline
+Item& Type & Number of Bytes  \\
+\hline
+Magic Number ( = 516114521)& Integer& 4 \\
+Version& Integer &4 \\
+Number of Nodes (Junctions + Reservoirs + Tanks) & Integer &4\\
+Number of Reservoirs \& Tanks &Integer &4\\
+Number of Links (Pipes + Pumps + Valves)&Integer& 4\\
+Number of Pumps& Integer& 4\\
+Number of Valves& Integer& 4\\
+Water Quality Option&Integer& 4\\
+Index of Node for Source Tracing& Integer& 4\\
+Flow Units Option&Integer &4\\
+Pressure Units Option & Integer & 4 \\
+Statistics Flag& Integer & 4\\
+Reporting Start Time (seconds) & Integer & 4 \\
+Reporting Time Step (seconds) & Integer & 4 \\
+Simulation Duration (seconds) & Integer & 4 \\
+Problem Title (1st line) & Char & 80 \\
+Problem Title (2nd line) & Char & 80 \\
+Problem Title (3rd line) & Char & 80 \\
+Name of Input File & Char & 260   \\
+Name of Report File & Char & 260  \\
+Name of Chemical & Char & 32      \\
+Chemical Concentration Units & Char & 32 \\
+ID Label of Each Node & Char & $32 \cdot Nnodes$ \\
+ID Label of Each Link & Char & $32 \cdot Nlinks$ \\
+Index of Start Node of Each Link & Integer & $4 \cdot Nlinks$ \\
+Index of End Node of Each Link & Integer & $4 \cdot Nlinks$   \\
+Type Code of Each Link & Integer & $4 \cdot Nlinks$           \\
+Node Index of Each Tank & Integer & $4 \cdot Ntanks$          \\
+Cross-Sectional Area of Each Tank & Float & $4 \cdot Ntanks$  \\
+Elevation of Each Node & Float & $4 \cdot Nnodes$             \\
+Length of Each Link & Float & $4 \cdot Nlinks$                \\
+Diameter of Each Link & Float & $4 \cdot Nlinks$              \\
+\hline
+\end{tabular}

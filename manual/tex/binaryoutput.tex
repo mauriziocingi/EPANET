@@ -1,0 +1,30 @@
+\chapter{Binary Output File Format}
+If a third file name is supplied to the command line that runs EPANET then the
+results for all parameters for all nodes and links for all reporting time periods will be
+saved to this file in a special binary format. This file can be used for special postprocessing
+purposes. Data written to the file are 4-byte integers, 4-byte floats, or
+fixed-size strings whose size is a multiple of 4 bytes. This allows the file to be
+divided conveniently into 4-byte records. The file consists of four sections of the
+following sizes in bytes:
+\begin{tabular}{|l|l|}
+\hline
+Section &Size in bytes\\
+\hline
+Prolog& $852 + 20\cdot Nnodes + 36\cdot Nlinks + 8\cdot Ntanks$   \\
+Energy Use& $28\cdot Npumps + 4 $   \\
+Extended Period& $(16\cdot Nnodes + 32\cdot Nlinks)*Nperiods$ \\
+Epilog& 28 \\
+\hline
+\end{tabular}
+
+\begin{tabular}{l l }
+$Nnodes$ & number of nodes (junctions + reservoirs + tanks) \\
+$Nlinks$ & number of links (pipes + pumps + valves)\\
+$Ntanks$ & number of tanks and reservoirs\\
+$Npumps$ & number of pumps\\
+$Nperiods$& number of reporting periods\\
+\end{tabular}
+
+All of these counts are themselves written to the file's Prolog or Epilog sections.
+
+\input{tex/prolog}

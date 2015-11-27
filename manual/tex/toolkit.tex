@@ -1,0 +1,99 @@
+\chapter{Epanet toolkit}
+
+EPANET is a program that analyzes the hydraulic and water quality behavior of
+water distribution systems. The EPANET Programmer's Toolkit is a dynamic link 
+library (DLL) of functions that allows developers to customize EPANET's computational 
+engine for their own specific needs. The functions can be incorporated into 32-bit Windows 
+applications written in C/C++, Delphi Pascal, Visual Basic, or any other language that can 
+call functions within a Windows DLL. The Toolkit DLL file is named EPANET2.DLL and is 
+distributed with EPANET. The Toolkit comes with several different header files, 
+function definition files, and .lib files that simplify the task of interfacing 
+it with C/C++, Delphi, and Visual Basic code.
+
+
+
+\begin{longtable}{|c| l|}
+\hline
+TASK&FUNCTION \\
+\hline
+\hline
+\multirow{1}{*}{Running a complete simulation}
+&ENepanet\\
+\hline
+\multirow{2}{*}{Opening and closing the EPANET Toolkit system}
+&ENopen \\
+&ENclose \\
+\hline
+\multirow{4}{*}{Retrieving information about network nodes}
+&ENgetnodeindex\\
+&ENgetnodeid\\
+&ENgetnodetype\\
+&ENgetnodevalue\\
+\hline
+\multirow{5}{*}{Retrieving information about network links}
+&ENgetlinkindex\\
+&ENgetlinkid\\
+&ENgetlinktype\\
+&ENgetlinknodes\\
+&ENgetlinkvalue\\
+\hline
+\multirow{4}{*}{Retrieving information about time patterns}
+&ENgetpatternid\\
+&ENgetpatternindex\\
+&ENgetpatternlen\\
+&ENgetpatternvalue\\
+\hline
+\multirow{3}{*}{Retrieving other network information}
+&ENgetcontrol\\
+&ENgetqualtype\\
+&ENgetoption\\
+\hline
+\multirow{9}{*}{Setting new values for network parameters}
+&ENsetcontrol\\
+&ENsetnodevalue\\
+&ENsetlinkvalue\\
+&ENaddpattern\\
+&ENsetpattern\\
+&ENsetpatternvalue\\
+&ENsetqualtype\\
+&ENsettimeparam\\
+&ENsetoption\\
+\hline
+\multirow{2}{*}{Saving and using hydraulic analysis results files}
+&ENsavehydfile\\
+&ENusehydfile\\
+\hline
+\multirow{6}{*}{Running a hydraulic analysis}
+&ENsolveH\\
+&ENopenH\\
+&ENinitH\\
+&ENrunH\\
+&ENnextH\\
+&ENcloseH\\
+\hline
+\multirow{7}{*}{Running a water quality analysis}
+&ENsolveQ\\
+&ENopenQ\\
+&ENinitQ\\
+&ENrunQ\\
+&ENnextQ\\
+&ENstepQ\\
+&ENcloseQ\\
+\hline
+\multirow{8}{*}{Generating an output report}
+&ENsaveH\\
+&ENsaveinpfile\\
+&ENreport\\
+&ENresetreport\\
+&ENsetreport\\
+&ENsetstatusreport\\
+&ENgeterror\\
+&ENwriteline\\
+\hline
+\end{longtable}
+
+\section{Functions}
+\input{tex/functions/ENepanet}
+\input{tex/functions/ENopen}
+\input{tex/functions/ENclose}
+\input{tex/functions/ENgetnodeindex}

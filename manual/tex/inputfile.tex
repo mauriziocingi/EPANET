@@ -1,0 +1,42 @@
+\chapter{Input File Format}
+The input file for EPANET has the same format as the text file that
+Windows EPANET generates from its File Export  Network command. 
+
+It is organized in sections, where each section begins with a keyword enclosed in
+brackets. The various keywords are listed in table \ref{tab:keywords}.
+
+
+
+\begin{table}[tbp]
+  \input{tex/keywords}
+  \caption{keywords used in inpfile}
+  \label{tab:keywords}
+
+\end{table}
+
+The order of sections is not important. However, whenever a node or link is referred
+to in a section it must have already been defined in the [JUNCTIONS],
+[RESERVOIRS], [TANKS], [PIPES], [PUMPS], or [VALVES] sections. Thus it is
+recommended that these sections be placed first, right after the [TITLE] section. The
+network map and tags sections are not used by EPANET and can be
+eliminated from the file.Each section can contain one or more lines of data. Blank lines can appear anywhere
+in the file and the semicolon (;) can be used to indicate that what follows on the line
+is a comment, not data. A maximum of 255 characters can appear on a line. The ID
+labels used to identify nodes, links, curves and patterns can be any combination of up
+to 31 characters and numbers.
+
+\section{Network Components}
+\input{tex/networkcomponents}
+  
+  
+
+
+
+\section{System Operation}
+  ... todo
+\section{Water Quality}
+  ... todo
+\section{Options and Reporting}
+  ... todo
+\section{Network Map/Tags}
+  ... todo

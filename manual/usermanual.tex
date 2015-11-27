@@ -1,0 +1,53 @@
+\documentclass[a4paper,11pt]{Report}
+\usepackage{latexsym}
+\usepackage[english]{babel}
+%\usepackage[utf8]{inputenc}
+\usepackage[]{graphicx}
+\usepackage{textcomp}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{appendix}
+\usepackage{listings}
+
+
+\author{M.~Cingi}
+\title{Epanet2 user's manual}
+
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\listoftables
+
+
+\chapter{General Instructions}
+
+EPANET can also be run as a console application from the command line within a
+DOS window. In this case network input data are placed into a text file and results
+are written to a text file. The command line for running EPANET in this fashion is:
+epanet2d inpfile rptfile outfile
+Here inpfile is the name of the input file, rptfile is the name of the output
+report file, and outfile is the name of an optional binary output file that stores
+results in a special binary format. If the latter file is not needed then just the input and
+report file names should be supplied. As written, the above command assumes that
+you are working in the directory in which EPANET was installed or that this
+directory has been added to the PATH statement in your AUTOEXEC.BAT file.
+Otherwise full pathnames for the executable epanet2d.exe and the files on the
+command line must be used. The error messages for command line EPANET  are listed in Appendix B.
+
+
+\input{tex/toolkit}
+
+\input{tex/inputfile}
+  
+\input{tex/binaryoutput}
+
+\appendix
+\input{tex/example}
+
+\chapter{Error Messages}
+\input{tex/errors}
+
+\end{document}
