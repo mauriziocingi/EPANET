@@ -10,6 +10,14 @@ distributed with EPANET. The Toolkit comes with several different header files,
 function definition files, and .lib files that simplify the task of interfacing 
 it with C/C++, Delphi, and Visual Basic code.
 
+function added in wateranalytics:
+ENaddcurve, ENgetaveragepatternvalue, ENgetbasedemand, ENgetcoord, ENgetcurveid, ENgetcurveindex, 
+ENgetcurvelen, ENgetcurve, ENgetcurvevalue, ENgetdemandpattern, ENgetflowunits, ENgetheadcurve, 
+ENgetnumdemands, ENgetpumptype, ENgetqualinfo, ENgetstatistic, ENgettimeparam, ENsetbasedemand, 
+ENsetcoord, ENsetcurve, ENsetcurvevalue
+
+
+
 
 
 \begin{longtable}{|c| l|}
@@ -44,6 +52,7 @@ TASK&FUNCTION \\
 &ENgetpatternvalue\\
 \hline
 \multirow{3}{*}{Retrieving other network information}
+&ENgetcount\\
 &ENgetcontrol\\
 &ENgetqualtype\\
 &ENgetoption\\
@@ -92,8 +101,80 @@ TASK&FUNCTION \\
 \hline
 \end{longtable}
 
-\section{Functions}
-\input{tex/functions/ENepanet}
-\input{tex/functions/ENopen}
-\input{tex/functions/ENclose}
-\input{tex/functions/ENgetnodeindex}
+
+\section{toolkit code information}
+ \input{tex/functions/ENgetversion}
+
+\section{Running a complete simulation}
+ \input{tex/functions/ENepanet}
+
+\section{Opening and closing the EPANET Toolkit system}
+ \input{tex/functions/ENopen}
+ \input{tex/functions/ENclose}
+
+\section{Retrieving information about network nodes}
+ \input{tex/functions/ENgetnodeindex}
+ \input{tex/functions/ENgetnodeid}
+ \input{tex/functions/ENgetnodetype}
+ \input{tex/functions/ENgetnodevalue}
+
+\section{Retrieving information about network links}
+ \input{tex/ENgetlinkindex}
+ \input{tex/ENgetlinkid}
+ \input{tex/ENgetlinktype}
+ \input{tex/ENgetlinknodes}
+ \input{tex/ENgetlinkvalue}
+
+\section{Retrieving information about time patterns}
+ \input{tex/functions/ENgetpatternid}
+ \input{tex/functions/ENgetpatternindex}
+ \input{tex/functions/ENgetpatternlen}
+ \input{tex/functions/ENgetpatternvalue}
+
+\section{Retrieving other network information}
+ \input{tex/functions/ENgetcount}
+ \input{tex/functions/ENgetcontrol}
+ \input{tex/functions/ENgetqualtype}
+ \input{tex/functions/ENgetoption}
+ 
+\section{Setting new values for network parameters} 
+ \input{tex/functions/ENsetcontrol}
+ \input{tex/functions/ENsetnodevalue}
+ \input{tex/functions/ENsetlinkvalue}
+ \input{tex/functions/ENaddpattern}
+ \input{tex/functions/ENsetpattern}
+ \input{tex/functions/ENsetpatternvalue}
+ \input{tex/functions/ENsetqualtype}
+ \input{tex/functions/ENsettimeparam}
+ \input{tex/functions/ENsetoption}
+
+\section{Saving and using hydraulic analysis results files} 
+ \input{tex/functions/ENsavehydfile}
+ \input{tex/functions/ENusehydfile}
+ 
+\section{Running a hydraulic analysis} 
+ \input{tex/functions/ENsolveH}
+ \input{tex/functions/ENopenH}
+ \input{tex/functions/ENinitH}
+ \input{tex/functions/ENrunH}
+ \input{tex/functions/ENnextH}
+ \input{tex/functions/ENcloseH}
+ 
+\section{Running a water quality analysis} 
+ \input{tex/functions/ENsolveQ}
+ \input{tex/functions/ENopenQ}
+ \input{tex/functions/ENinitQ}
+ \input{tex/functions/ENrunQ}
+ \input{tex/functions/ENnextQ}
+ \input{tex/functions/ENstepQ}
+ \input{tex/functions/ENcloseQ}
+ 
+\section{Generating an output report} 
+ \input{tex/functions/ENsaveH}
+ \input{tex/functions/ENsaveinpfile}
+ \input{tex/functions/ENreport}
+ \input{tex/functions/ENresetreport}
+ \input{tex/functions/ENsetreport}
+ \input{tex/functions/ENsetstatusreport}
+ \input{tex/functions/ENgeterror}
+ \input{tex/functions/ENwriteline}

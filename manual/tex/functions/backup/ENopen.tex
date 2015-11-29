@@ -1,20 +1,28 @@
 \subsection{ENopen}
 \subsubsection{Declaration}
 \begin{lstlisting}
-int ENopen(char *inpFile, char *rptFile, char *binOutFile);
+int ENopen( char* f1, char* f2, char* f3)
 \end{lstlisting}
+
 \subsubsection{Description}
 Opens the Toolkit to analyze a particular distribution system.
 \subsubsection{Arguments}
-\begin{tabular}{l r p{11cm} }
-char pointer&inpFile&name of the input file \\[6pt]
-char pointer&rptFile&name of an output report file\\[6pt]
-char pointer&binOutFile&name of an optional binary output file\\[6pt]
+\begin{tabular}{ r p{11cm} }
+f1&name of the input file \\[6pt]
+f2& name of an output report file \\[6pt]
+f3& name of an optional binary output file\\[6pt]
 \end{tabular}
+
+ 
+ 
+  
 \subsubsection{Returns}
 Returns an error code.
+ 
+
+
 \subsubsection{Notes}
-If there is no need to save EPANET's binary Output file then binOutFile can be an empty string ("").
+If there is no need to save EPANET's binary Output file then f3 can be an empty string ("").
 
 ENopen must be called before any of the other toolkit functions (except ENepanet) are used.
  

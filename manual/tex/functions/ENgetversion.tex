@@ -1,0 +1,18 @@
+\subsection{ENgetversion}
+\subsubsection{Declaration}
+\begin{lstlisting}
+int ENgetversion(int *version);
+\end{lstlisting}
+\subsubsection{Description}
+retrieves a number assigned to the most recent
+update of the source code. This number, set by the
+constant CODEVERSION found in TYPES.H, is to be
+interpreted with implied decimals, i.e., "20100" == "2(.)01(.)00"
+\subsubsection{Arguments}
+\begin{tabular}{l r p{11cm} }
+int pointer&version&version number of the source code\\[6pt]
+\end{tabular}
+\subsubsection{Returns}
+Returns an error code.
+\subsubsection{Notes}
+Error code should always be 0
