@@ -1972,6 +1972,7 @@ int DLLEXPORT ENsetnodevalue(int index, int code, EN_API_FLOAT_TYPE v)
    int  j;
    Pdemand demand;
    Psource source;
+   double Htmp;
    double value = v;
 
    if (!Openflag) return(102);
@@ -2092,6 +2093,7 @@ int DLLEXPORT ENsetnodevalue(int index, int code, EN_API_FLOAT_TYPE v)
 
       case EN_TANKDIAM:
          if (value <= 0.0) return(202);
+         if (index <= Njuncs) return(251);
          j = index - Njuncs;
          if (j > 0 && Tank[j].A > 0.0)
          {
@@ -2101,10 +2103,15 @@ int DLLEXPORT ENsetnodevalue(int index, int code, EN_API_FLOAT_TYPE v)
             Tank[j].V0 = tankvolume(j, Tank[j].H0);
             Tank[j].Vmax = tankvolume(j, Tank[j].Hmax);
          }
+         else
+         {
+            return(251);
+         }
          break;
 
       case EN_MINVOLUME:
          if (value < 0.0) return(202);
+         if (index <= Njuncs) return(251);
          j = index - Njuncs;
          if (j > 0 && Tank[j].A > 0.0)
          {
@@ -2112,41 +2119,65 @@ int DLLEXPORT ENsetnodevalue(int index, int code, EN_API_FLOAT_TYPE v)
             Tank[j].V0 = tankvolume(j, Tank[j].H0);
             Tank[j].Vmax = tankvolume(j, Tank[j].Hmax);
          }
+         else
+         {
+            return(251);
+         }
          break;
         
       case EN_MINLEVEL:
          if (value < 0.0) return(202);
+         if (index <= Njuncs) return(251); //not a tank or reservoir
          j = index - Njuncs;
-         if (j > 0 && Tank[j].A > 0.0)
+         if (Tank[j].A == 0.0) return(251); //node is a reservoir
+         Htmp = value/Ucf[ELEV] + Node[index].El;
+         if (Htmp < Tank[j].Hmax && Htmp <= Tank[j].H0)
          {
             if (Tank[j].Vcurve > 0) return(202);
-            Tank[j].Hmin = value/Ucf[ELEV] + Node[index].El;
+            Tank[j].Hmin = Htmp;
             Tank[j].Vmin = tankvolume(j, Tank[j].Hmin);
+         }
+         else
+         {
+            return(251);
          }
          break;
 
       case EN_MAXLEVEL:
          if (value < 0.0) return(202);
+         if (index <= Njuncs) return(251); //not a tank or reservoir
          j = index - Njuncs;
-         if (j > 0 && Tank[j].A > 0.0)
+         if (Tank[j].A == 0.0) return(251); //node is a reservoir
+         Htmp = value/Ucf[ELEV] + Node[index].El;
+         if (Htmp > Tank[j].Hmin && Htmp >= Tank[j].H0)
          {
             if (Tank[j].Vcurve > 0) return(202);
-            Tank[j].Hmax = value/Ucf[ELEV] + Node[index].El;
+            Tank[j].Hmax = Htmp;
             Tank[j].Vmax = tankvolume(j, Tank[j].Hmax);
+         }
+         else
+         {
+            return(251);
          }
          break;
 
       case EN_MIXMODEL:
          j = ROUND(value);
+         if (index <= Njuncs) return(251);
          if (j < MIX1 || j > LIFO) return(202);
          if (index > Njuncs && Tank[index-Njuncs].A > 0.0)
          {
             Tank[index-Njuncs].MixModel = (char)j;
          }
+         else
+         {
+            return(251);
+         }
          break;
 
       case EN_MIXFRACTION:
          if (value < 0.0 || value > 1.0) return(202);
+         if (index <= Njuncs) return(251);
          j = index - Njuncs;
          if (j > 0 && Tank[j].A > 0.0)
          {
@@ -2155,11 +2186,16 @@ int DLLEXPORT ENsetnodevalue(int index, int code, EN_API_FLOAT_TYPE v)
          break;
 
       case EN_TANK_KBULK:
+         if (index <= Njuncs) return(251);
          j = index - Njuncs;
          if (j > 0 && Tank[j].A > 0.0)
          {
             Tank[j].Kb = value/SECperDAY;
             Reactflag = 1;
+         }
+         else
+         {
+            return(251);
          }
          break;
 
@@ -2764,21 +2800,19 @@ int  DLLEXPORT ENsetqualtype(int qualcode, char *chemname,
    return(0);
 }
 
-int DLLEXPORT ENgetheadcurve(int index, char *id)
+int DLLEXPORT ENgetheadcurveindex(int index, int *curveindex)
 /*----------------------------------------------------------------
 **  Input:   index = index of pump in list of links
-**  Output:  id = head curve ID
+**  Output:  curveindex = head curve index
 **  Returns: error code                              
-**  Purpose: retrieves ID of a head curve for specific link index
+**  Purpose: retrieves index of a head curve for specific link index
 **
-**  NOTE: 'id' must be able to hold MAXID characters
 **----------------------------------------------------------------
 */
 {
-   strcpy(id,"");
    if (!Openflag) return(102);
    if (index < 1 || index > Nlinks || PUMP != Link[index].Type) return(204);
-   strcpy(id,Curve[Pump[PUMPINDEX(index)].Hcurve].ID);
+   *curveindex = Pump[PUMPINDEX(index)].Hcurve;
    return(0);
 }
 
@@ -2896,7 +2930,7 @@ int  openhydfile()
    if (Hydflag != USE)
    {
       magic = MAGICNUMBER;
-      version = VERSION;
+      version = ENGINE_VERSION;
       nsize[0] = Nnodes;
       nsize[1] = Nlinks;
       nsize[2] = Ntanks;
@@ -2916,7 +2950,7 @@ int  openhydfile()
       fread(&magic,sizeof(INT4),1,HydFile);
       if (magic != MAGICNUMBER) return(306);
       fread(&version,sizeof(INT4),1,HydFile);
-      if (version != VERSION) return(306);
+      if (version != ENGINE_VERSION) return(306);
       if (fread(nsize,sizeof(INT4),6,HydFile) < 6) return(306);
       if (nsize[0] != Nnodes  || nsize[1] != Nlinks ||
           nsize[2] != Ntanks  || nsize[3] != Npumps ||
@@ -3264,6 +3298,9 @@ void  freedata()
        }
        free(Curve);
     }
+    
+/* Free memory for node coordinates */
+   if (Coordflag == TRUE) free(Coord);
 
 /* Free memory for rule base (see RULES.C) */
     freerules();
