@@ -1,6 +1,6 @@
 import enoutwrap  as ENob
 
-filename="net1.bin"  #"outapi.pyc" #
+filename="Net1.bin"  #"outapi.pyc" #
 netout= ENob.open(filename)
 
 print "nodes:",   ENob.getnetsize(netout, ENob.ENR_nodeCount )

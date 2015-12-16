@@ -34,7 +34,7 @@ int   main()
   
   //check warnings
   ENR_getWarningCode(addr, &warncode);
-  if (warncode) printf("warnings!  %d\n", &warncode);
+  if (warncode) printf("warnings!  %d\n", warncode);
   else printf("no warning\n");
 
   // then check some values

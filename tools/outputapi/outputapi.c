@@ -143,7 +143,9 @@ int DLLEXPORT ENR_close(ENResultsAPI **enrapi)
 **-------------------------------------------------------------------------
 */
 {   if ((*enrapi)!=NULL) {
-	fclose( (*enrapi)->file);
+        // avoid fclose(NULL)-> crash with Linux gcc (segmentation fault)
+        if ((*enrapi)->file != NULL) 
+	   fclose( (*enrapi)->file);
         free(*enrapi);
         *enrapi = NULL;
         return 0;
