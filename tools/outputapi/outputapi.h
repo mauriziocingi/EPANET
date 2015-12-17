@@ -7,19 +7,16 @@
 
 #ifndef OUTPUTAPI_H_
 #define OUTPUTAPI_H_
-#define   MAGICNUMBER        516114521
+
 #define   MAXFNAME  259      /* Max. # characters in file name         */
 #define   MAXTITLE  3        /* Max. # title lines                     */
-#define   MAXID     31       /* Max. # characters in ID name           */      //(2.00.11 - LR)
+
+#define MAXID        31       // Max. # characters in ID name
+#define MAXMSG       79       // Max. # characters in message text
+#define NNODERESULTS  4       // number of result fields for nodes
+#define NLINKRESULTS  8       // number of result fields for links
 
 
-/*------------------- Error Messages --------------------*/
-#define ERR411 "Input Error 411: no memory allocated for results."
-#define ERR412 "Input Error 412: no results; binary file hasn't been opened."
-#define ERR421 "Input Error 421: invalid parameter code."
-#define ERR434 "File Error  434: unable to open binary output file."
-#define ERR435 "File Error  435: run terminated; no results in binary file."
-#define ERR436 "File Error  436: run terminated; wrong binary file type."
 
 
 /* Epanet Results binary file API */
@@ -92,6 +89,7 @@ typedef enum {
 
 
 int DLLEXPORT ENR_open(ENResultsAPI* *enrapi, char* path);
+
 int DLLEXPORT ENR_getEnVersion(ENResultsAPI* enrapi, int* version);
 int DLLEXPORT ENR_getWarningCode(ENResultsAPI* enrapi, int* warncode);
 
@@ -113,7 +111,7 @@ float* ENR_newOutValueArray(ENResultsAPI* enrapi, ENR_ApiFunction func,
         ENR_ElementType type, int* length, int* errcode);
 
 int DLLEXPORT ENR_getNodeSeries(ENResultsAPI* enrapi, int nodeIndex, ENR_NodeAttribute attr,
-        int timeIndex, int length, float* outValueSeries, int* len);
+        int timeIndex, int length, float* outValueSeries);
 int DLLEXPORT ENR_getLinkSeries(ENResultsAPI* enrapi, int linkIndex, ENR_LinkAttribute attr,
         int timeIndex, int length, float* outValueSeries);
 

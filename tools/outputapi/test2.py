@@ -1,21 +1,34 @@
-import enoutwrap  as ENob
+"""example: call thougt functionalwrapper  module
 
-filename="Net1.bin"  #"outapi.pyc" #
-netout= ENob.open(filename)
+"""
+import functionalwrapper  as ENob
 
-print "nodes:",   ENob.getnetsize(netout, ENob.ENR_nodeCount )
-print "tanks:",   ENob.getnetsize(netout, ENob.ENR_tankCount )
-print "links:",   ENob.getnetsize(netout, ENob.ENR_linkCount )
-print "pumps:",   ENob.getnetsize(netout, ENob.ENR_pumpCount )
-print "valves:",  ENob.getnetsize(netout, ENob.ENR_valveCount )
+filename="Net1.bin" 
 
-numperiods= ENob.gettimes(netout, ENob.ENR_numPeriods)
+try:
+   netout= ENob.open(filename)
+except  ENob.EnOutErr as e:
+  print e
+  exit()
+
+print "nodes:",   ENob.getnumnodes(netout)
+print "tanks:",   ENob.getnumtanks(netout)
+print "links:",   ENob.getnumlinks(netout)
+print "pumps:",   ENob.getnumpumps(netout)
+print "valves:",  ENob.getnumvalves(netout)
+
+numperiods= ENob.getnumperiods(netout)
 index= 10
 nodeID= ENob.getnodeid(netout, index)
 print "\n\nHead at node index={0}, ID={1} for {2} periods".format( index, nodeID, numperiods)
 
 for i in range(0, numperiods):
-    print ENob.getnodevalue(netout, timeidx=i, nodeidx=index, attridx=ENob.ENR_head),
+    print ENob.getnodehead(netout, timeidx=i, nodeidx=index),
 print "\n\n"
 
 ENob.close(netout)
+
+try:
+  netout= ENob.open('nonexists')
+except  ENob.EnOutErr as e:
+  print "voluntary error -->{0}".format(e)

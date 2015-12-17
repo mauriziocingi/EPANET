@@ -1,3 +1,6 @@
+"""example: call thougt modified ENOutputWrapper  module
+
+"""
 import ENOutputWrapper as eow
 
 binfile = 'Net1.bin'

@@ -21,18 +21,14 @@
 #include <stdbool.h>
 #include <string.h>
 #include "outputapi.h"
+#include "messages.h"
 
 #define INT4  int
 #define REAL4 float
 #define INTSIZE 4         // integers and reals not always
 #define REALSIZE 4        // have same size, couldbe int & double?
-
 #define MEMCHECK(x)  (((x) == NULL) ? 411 : 0 )
-
-#define MAXMSG       79          /* Max. # characters in message text      */
-#define MINNREC      14          // minimum allowable number of records
-#define NNODERESULTS  4          // number of result fields for nodes
-#define NLINKRESULTS  8          // number of result fields for links
+#define MAGICNUMBER        516114521
 
 
 struct ENResultsAPI {
@@ -166,7 +162,7 @@ int DLLEXPORT ENR_getEnVersion(ENResultsAPI* enrapi, int* version)
 **
 **--------------element codes-------------------------------------------
 */
-{
+{       if (enrapi==NULL) return 412;
 	fseek(enrapi->file, 1*INTSIZE, SEEK_SET);
 	if (fread(version, INTSIZE, 1, enrapi->file)==1) return 0;
 	else return 436;
@@ -184,7 +180,7 @@ int DLLEXPORT ENR_getWarningCode(ENResultsAPI* enrapi, int* warncode)
 **  1 = Warning
 **--------------element codes-------------------------------------------
 */
-{
+{       if (enrapi==NULL) return 412;
 	fseek(enrapi->file, -2*INTSIZE, SEEK_END);
 	if (fread(warncode, INTSIZE, 1, enrapi->file)==1) return 0;
 	else return 436;
@@ -214,9 +210,8 @@ int DLLEXPORT ENR_getNetSize(ENResultsAPI* enrapi, ENR_ElementCount code, int* c
 */
 {
     *count = -1;
-    if (enrapi==NULL) return 411;
-    if (enrapi!=NULL) {
-        switch (code)
+    if (enrapi==NULL) return 412;
+    switch (code)
         {
         case ENR_nodeCount:    *count = enrapi->nodeCount;  break;
         case ENR_tankCount:    *count = enrapi->tankCount;  break;
@@ -229,8 +224,6 @@ int DLLEXPORT ENR_getNetSize(ENResultsAPI* enrapi, ENR_ElementCount code, int* c
         default: return 421;
         }
         return 0;
-    }
-    return 412;
 }
 
 int DLLEXPORT ENR_getUnits(ENResultsAPI* enrapi, ENR_Unit code, int* unitFlag)
@@ -263,8 +256,8 @@ int DLLEXPORT ENR_getUnits(ENResultsAPI* enrapi, ENR_Unit code, int* unitFlag)
 */
 {
     *unitFlag = -1;
-    if (enrapi!=NULL) {
-        switch (code)
+    if (enrapi==NULL) return 412;
+    switch (code)
         {
         case ENR_flowUnits:   
            fseek(enrapi->file, 9*INTSIZE, SEEK_SET);
@@ -279,8 +272,6 @@ int DLLEXPORT ENR_getUnits(ENResultsAPI* enrapi, ENR_Unit code, int* unitFlag)
         default: return 421;
         }
         return 0;
-    }
-    return 412;
 }
 
 int DLLEXPORT ENR_getTimes(ENResultsAPI* enrapi, ENR_Time code, int* time)
@@ -338,6 +329,7 @@ int DLLEXPORT ENR_getNodeID(ENResultsAPI* enrapi, int nodeIndex, char* id)
 */
 {
     int offset;
+    if (enrapi==NULL) return 412;
     // calculate byte offset
     offset= 15*INTSIZE+3*(MAXMSG+1)+2*(MAXFNAME+1)+ 2*(MAXID+1);
     offset+= nodeIndex* (MAXID+1);
@@ -359,6 +351,7 @@ int DLLEXPORT ENR_getLinkID(ENResultsAPI* enrapi, int linkIndex, char* id)
 */
 {
     int offset;
+    if (enrapi==NULL) return 412;
     // calculate byte offset
     offset= 15*INTSIZE+3*(MAXMSG+1)+2*(MAXFNAME+1)+ 2*(MAXID+1)+
             enrapi->nodeCount* (MAXID+1);
@@ -390,14 +383,16 @@ int DLLEXPORT ENR_getNodeValue(ENResultsAPI* enrapi, int timeIndex, int nodeInde
 **-------------------------------------------------------------------------
 */
 {   int offset;
-    if ( 0 >  timeIndex | timeIndex >=enrapi->nPeriods ) return 666;
-    if ( 0 >  nodeIndex | nodeIndex >=enrapi->nodeCount ) return 667;
+    if (enrapi==NULL) return 412;
+
+    if ( 0 >  timeIndex | timeIndex >=enrapi->nPeriods ) return 437;
+    if ( 0 >  nodeIndex | nodeIndex >=enrapi->nodeCount ) return 438;
     // calculate byte offset to start time for series
     offset = enrapi->outputStartPos + timeIndex* enrapi->bytesPerPeriod;
     // add bytepos for node and attribute
     offset += (nodeIndex + attr*enrapi->nodeCount)*REALSIZE;
     fseek(enrapi->file, offset, SEEK_SET);
-    if (fread(value, REALSIZE, 1, enrapi->file)!= 1) return 668;
+    if (fread(value, REALSIZE, 1, enrapi->file)!= 1) return 440;
     return 0;
 }
 
@@ -422,16 +417,18 @@ int DLLEXPORT ENR_getLinkValue(ENResultsAPI* enrapi, int timeIndex, int linkInde
 **  ENR_frctnFctr    = 7
 **-------------------------------------------------------------------------
 */
-{   int offset;
-    if ( 0 >  timeIndex | timeIndex >=enrapi->nPeriods ) return 666;
-    if ( 0 >  linkIndex | linkIndex >=enrapi->linkCount ) return 667;
+{   
+    int offset;
+    if (enrapi==NULL) return 412;
+    if ( 0 >  timeIndex | timeIndex >=enrapi->nPeriods ) return 437;
+    if ( 0 >  linkIndex | linkIndex >=enrapi->linkCount ) return 439;
     // Calculate byte offset to start time for series
     offset = enrapi->outputStartPos + timeIndex*enrapi->bytesPerPeriod
             + (NNODERESULTS*enrapi->nodeCount)*REALSIZE;
     // add bytepos for link and attribute
     offset += (linkIndex + attr*enrapi->linkCount)*REALSIZE;
     fseek(enrapi->file, offset, SEEK_SET);
-    if (fread(value, REALSIZE, 1, enrapi->file)!= 1) return 668;
+    if (fread(value, REALSIZE, 1, enrapi->file)!= 1) return 440;
     return 0;
 }
 
@@ -439,7 +436,7 @@ int DLLEXPORT ENR_getLinkValue(ENResultsAPI* enrapi, int timeIndex, int linkInde
 
 /* -----------------------------------------------------------------------------
 
-   from this point untouched code
+   from this point (near) untouched code
 
 -------------------------------------------------------------------------------*/
 
@@ -519,9 +516,9 @@ float* ENR_newOutValueArray(ENResultsAPI* enrapi, ENR_ApiFunction func,
 
 
 int DLLEXPORT ENR_getNodeSeries(ENResultsAPI* enrapi, int nodeIndex, ENR_NodeAttribute attr,
-        int seriesStart, int seriesLength, float* outValueSeries, int* length)
+        int seriesStart, int seriesLength, float* outValueSeries)
 //
-//  What if timeIndex 0? length 0?
+//  What if timeIndex 0? length 0?  removed   unused  int* length
 //
 //  Purpose: Get time series results for particular attribute. Specify series
 //  start and length using seriesStart and seriesLength respectively.
@@ -686,11 +683,6 @@ int DLLEXPORT ENR_errMessage(int errcode, char* errmsg, int n)
 //
 //  Purpose: takes error code returns error message
 //
-//  Input Error 411: no memory allocated for results
-//  Input Error 412: no results binary file hasn't been opened
-//  Input Error 421: invalid parameter code
-//  File Error  434: unable to open binary output file
-//  File Error  435: run terminated no results in binary file
 {
     switch (errcode)
     {
@@ -700,6 +692,9 @@ int DLLEXPORT ENR_errMessage(int errcode, char* errmsg, int n)
     case 434: strncpy(errmsg, ERR434, n); break;
     case 435: strncpy(errmsg, ERR435, n); break;
     case 436: strncpy(errmsg, ERR436, n); break;
+    case 437: strncpy(errmsg, ERR437, n); break;
+    case 438: strncpy(errmsg, ERR438, n); break;
+    case 439: strncpy(errmsg, ERR439, n); break;
     default: return 421;
     }
 
