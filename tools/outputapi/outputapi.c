@@ -49,7 +49,7 @@ float  getLinkValue(ENResultsAPI*, int, int, ENR_LinkAttribute);
 
 
 
-int DLLEXPORT ENR_open(ENResultsAPI* *penrapi, char* path)
+int DLLEXPORT ENR_open(ENResultsAPI* *penrapi, const char* path)
 /*------------------------------------------------------------------------
 **   Input:   path
 **   Output:  penrapi = pointer to ENResultsAPI struct

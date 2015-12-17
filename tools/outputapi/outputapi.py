@@ -1,7 +1,7 @@
 '''Wrapper for outputapi.h
 
 Generated with:
-C:\Users\cingim\Documents\GitHub\EPANET\tools\outputapi\ctypesgen.py -o outputapi.py -loutputapi outputapi.h
+/home/mau/ctypesgen-0.r125/ctypesgen.py outputapi.h -loutputapi -o outputapi.py
 
 Do not modify this file.
 '''
@@ -594,259 +594,259 @@ _libs["outputapi"] = load_library("outputapi")
 
 # No modules
 
-# C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 23
+# /home/mau/github/EPANET/tools/outputapi/outputapi.h: 23
 class struct_ENResultsAPI(Structure):
     pass
 
-ENResultsAPI = struct_ENResultsAPI # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 23
+ENResultsAPI = struct_ENResultsAPI # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 23
 
-enum_anon_1 = c_int # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 28
+enum_anon_1 = c_int # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 28
 
-ENR_node = 1 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 28
+ENR_node = 1 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 28
 
-ENR_link = 2 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 28
+ENR_link = 2 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 28
 
-ENR_ElementType = enum_anon_1 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 28
+ENR_ElementType = enum_anon_1 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 28
 
-enum_anon_2 = c_int # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 34
+enum_anon_2 = c_int # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 34
 
-ENR_getSeries = 1 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 34
+ENR_getSeries = 1 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 34
 
-ENR_getAttribute = 2 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 34
+ENR_getAttribute = 2 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 34
 
-ENR_getResult = 3 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 34
+ENR_getResult = 3 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 34
 
-ENR_ApiFunction = enum_anon_2 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 34
+ENR_ApiFunction = enum_anon_2 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 34
 
-enum_anon_3 = c_int # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 42
+enum_anon_3 = c_int # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 42
 
-ENR_nodeCount = 1 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 42
+ENR_nodeCount = 1 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 42
 
-ENR_tankCount = 2 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 42
+ENR_tankCount = 2 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 42
 
-ENR_linkCount = 3 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 42
+ENR_linkCount = 3 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 42
 
-ENR_pumpCount = 4 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 42
+ENR_pumpCount = 4 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 42
 
-ENR_valveCount = 5 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 42
+ENR_valveCount = 5 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 42
 
-ENR_ElementCount = enum_anon_3 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 42
+ENR_ElementCount = enum_anon_3 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 42
 
-enum_anon_4 = c_int # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 47
+enum_anon_4 = c_int # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 47
 
-ENR_flowUnits = 1 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 47
+ENR_flowUnits = 1 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 47
 
-ENR_pressUnits = 2 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 47
+ENR_pressUnits = 2 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 47
 
-ENR_Unit = enum_anon_4 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 47
+ENR_Unit = enum_anon_4 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 47
 
-enum_anon_5 = c_int # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 54
+enum_anon_5 = c_int # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 54
 
-ENR_reportStart = 1 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 54
+ENR_reportStart = 1 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 54
 
-ENR_reportStep = 2 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 54
+ENR_reportStep = 2 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 54
 
-ENR_simDuration = 3 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 54
+ENR_simDuration = 3 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 54
 
-ENR_numPeriods = 4 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 54
+ENR_numPeriods = 4 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 54
 
-ENR_Time = enum_anon_5 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 54
+ENR_Time = enum_anon_5 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 54
 
-enum_anon_6 = c_int # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 61
+enum_anon_6 = c_int # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 61
 
-ENR_demand = 0 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 61
+ENR_demand = 0 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 61
 
-ENR_head = 1 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 61
+ENR_head = 1 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 61
 
-ENR_pressure = 2 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 61
+ENR_pressure = 2 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 61
 
-ENR_quality = 3 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 61
+ENR_quality = 3 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 61
 
-ENR_NodeAttribute = enum_anon_6 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 61
+ENR_NodeAttribute = enum_anon_6 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 61
 
-enum_anon_7 = c_int # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 72
+enum_anon_7 = c_int # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 72
 
-ENR_flow = 0 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 72
+ENR_flow = 0 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 72
 
-ENR_velocity = 1 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 72
+ENR_velocity = 1 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 72
 
-ENR_headloss = 2 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 72
+ENR_headloss = 2 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 72
 
-ENR_avgQuality = 3 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 72
+ENR_avgQuality = 3 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 72
 
-ENR_status = 4 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 72
+ENR_status = 4 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 72
 
-ENR_setting = 5 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 72
+ENR_setting = 5 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 72
 
-ENR_rxRate = 6 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 72
+ENR_rxRate = 6 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 72
 
-ENR_frctnFctr = 7 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 72
+ENR_frctnFctr = 7 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 72
 
-ENR_LinkAttribute = enum_anon_7 # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 72
+ENR_LinkAttribute = enum_anon_7 # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 72
 
-# C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 91
+# /home/mau/github/EPANET/tools/outputapi/outputapi.h: 91
 if hasattr(_libs['outputapi'], 'ENR_open'):
     ENR_open = _libs['outputapi'].ENR_open
     ENR_open.argtypes = [POINTER(POINTER(ENResultsAPI)), String]
     ENR_open.restype = c_int
 
-# C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 93
+# /home/mau/github/EPANET/tools/outputapi/outputapi.h: 93
 if hasattr(_libs['outputapi'], 'ENR_getEnVersion'):
     ENR_getEnVersion = _libs['outputapi'].ENR_getEnVersion
     ENR_getEnVersion.argtypes = [POINTER(ENResultsAPI), POINTER(c_int)]
     ENR_getEnVersion.restype = c_int
 
-# C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 94
+# /home/mau/github/EPANET/tools/outputapi/outputapi.h: 94
 if hasattr(_libs['outputapi'], 'ENR_getWarningCode'):
     ENR_getWarningCode = _libs['outputapi'].ENR_getWarningCode
     ENR_getWarningCode.argtypes = [POINTER(ENResultsAPI), POINTER(c_int)]
     ENR_getWarningCode.restype = c_int
 
-# C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 96
+# /home/mau/github/EPANET/tools/outputapi/outputapi.h: 96
 if hasattr(_libs['outputapi'], 'ENR_getNetSize'):
     ENR_getNetSize = _libs['outputapi'].ENR_getNetSize
     ENR_getNetSize.argtypes = [POINTER(ENResultsAPI), ENR_ElementCount, POINTER(c_int)]
     ENR_getNetSize.restype = c_int
 
-# C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 97
+# /home/mau/github/EPANET/tools/outputapi/outputapi.h: 97
 if hasattr(_libs['outputapi'], 'ENR_getUnits'):
     ENR_getUnits = _libs['outputapi'].ENR_getUnits
     ENR_getUnits.argtypes = [POINTER(ENResultsAPI), ENR_Unit, POINTER(c_int)]
     ENR_getUnits.restype = c_int
 
-# C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 98
+# /home/mau/github/EPANET/tools/outputapi/outputapi.h: 98
 if hasattr(_libs['outputapi'], 'ENR_getTimes'):
     ENR_getTimes = _libs['outputapi'].ENR_getTimes
     ENR_getTimes.argtypes = [POINTER(ENResultsAPI), ENR_Time, POINTER(c_int)]
     ENR_getTimes.restype = c_int
 
-# C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 101
+# /home/mau/github/EPANET/tools/outputapi/outputapi.h: 101
 if hasattr(_libs['outputapi'], 'ENR_getNodeValue'):
     ENR_getNodeValue = _libs['outputapi'].ENR_getNodeValue
     ENR_getNodeValue.argtypes = [POINTER(ENResultsAPI), c_int, c_int, ENR_NodeAttribute, POINTER(c_float)]
     ENR_getNodeValue.restype = c_int
 
-# C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 102
+# /home/mau/github/EPANET/tools/outputapi/outputapi.h: 102
 if hasattr(_libs['outputapi'], 'ENR_getLinkValue'):
     ENR_getLinkValue = _libs['outputapi'].ENR_getLinkValue
     ENR_getLinkValue.argtypes = [POINTER(ENResultsAPI), c_int, c_int, ENR_LinkAttribute, POINTER(c_float)]
     ENR_getLinkValue.restype = c_int
 
-# C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 104
+# /home/mau/github/EPANET/tools/outputapi/outputapi.h: 104
 if hasattr(_libs['outputapi'], 'ENR_getNodeID'):
     ENR_getNodeID = _libs['outputapi'].ENR_getNodeID
     ENR_getNodeID.argtypes = [POINTER(ENResultsAPI), c_int, String]
     ENR_getNodeID.restype = c_int
 
-# C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 105
+# /home/mau/github/EPANET/tools/outputapi/outputapi.h: 105
 if hasattr(_libs['outputapi'], 'ENR_getLinkID'):
     ENR_getLinkID = _libs['outputapi'].ENR_getLinkID
     ENR_getLinkID.argtypes = [POINTER(ENResultsAPI), c_int, String]
     ENR_getLinkID.restype = c_int
 
-# C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 108
+# /home/mau/github/EPANET/tools/outputapi/outputapi.h: 108
 if hasattr(_libs['outputapi'], 'ENR_newOutValueSeries'):
     ENR_newOutValueSeries = _libs['outputapi'].ENR_newOutValueSeries
     ENR_newOutValueSeries.argtypes = [POINTER(ENResultsAPI), c_int, c_int, POINTER(c_int), POINTER(c_int)]
     ENR_newOutValueSeries.restype = POINTER(c_float)
 
-# C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 110
+# /home/mau/github/EPANET/tools/outputapi/outputapi.h: 110
 if hasattr(_libs['outputapi'], 'ENR_newOutValueArray'):
     ENR_newOutValueArray = _libs['outputapi'].ENR_newOutValueArray
     ENR_newOutValueArray.argtypes = [POINTER(ENResultsAPI), ENR_ApiFunction, ENR_ElementType, POINTER(c_int), POINTER(c_int)]
     ENR_newOutValueArray.restype = POINTER(c_float)
 
-# C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 113
+# /home/mau/github/EPANET/tools/outputapi/outputapi.h: 113
 if hasattr(_libs['outputapi'], 'ENR_getNodeSeries'):
     ENR_getNodeSeries = _libs['outputapi'].ENR_getNodeSeries
     ENR_getNodeSeries.argtypes = [POINTER(ENResultsAPI), c_int, ENR_NodeAttribute, c_int, c_int, POINTER(c_float)]
     ENR_getNodeSeries.restype = c_int
 
-# C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 115
+# /home/mau/github/EPANET/tools/outputapi/outputapi.h: 115
 if hasattr(_libs['outputapi'], 'ENR_getLinkSeries'):
     ENR_getLinkSeries = _libs['outputapi'].ENR_getLinkSeries
     ENR_getLinkSeries.argtypes = [POINTER(ENResultsAPI), c_int, ENR_LinkAttribute, c_int, c_int, POINTER(c_float)]
     ENR_getLinkSeries.restype = c_int
 
-# C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 118
+# /home/mau/github/EPANET/tools/outputapi/outputapi.h: 118
 if hasattr(_libs['outputapi'], 'ENR_getNodeAttribute'):
     ENR_getNodeAttribute = _libs['outputapi'].ENR_getNodeAttribute
     ENR_getNodeAttribute.argtypes = [POINTER(ENResultsAPI), c_int, ENR_NodeAttribute, POINTER(c_float)]
     ENR_getNodeAttribute.restype = c_int
 
-# C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 120
+# /home/mau/github/EPANET/tools/outputapi/outputapi.h: 120
 if hasattr(_libs['outputapi'], 'ENR_getLinkAttribute'):
     ENR_getLinkAttribute = _libs['outputapi'].ENR_getLinkAttribute
     ENR_getLinkAttribute.argtypes = [POINTER(ENResultsAPI), c_int, ENR_LinkAttribute, POINTER(c_float)]
     ENR_getLinkAttribute.restype = c_int
 
-# C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 123
+# /home/mau/github/EPANET/tools/outputapi/outputapi.h: 123
 if hasattr(_libs['outputapi'], 'ENR_getNodeResult'):
     ENR_getNodeResult = _libs['outputapi'].ENR_getNodeResult
     ENR_getNodeResult.argtypes = [POINTER(ENResultsAPI), c_int, c_int, POINTER(c_float)]
     ENR_getNodeResult.restype = c_int
 
-# C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 125
+# /home/mau/github/EPANET/tools/outputapi/outputapi.h: 125
 if hasattr(_libs['outputapi'], 'ENR_getLinkResult'):
     ENR_getLinkResult = _libs['outputapi'].ENR_getLinkResult
     ENR_getLinkResult.argtypes = [POINTER(ENResultsAPI), c_int, c_int, POINTER(c_float)]
     ENR_getLinkResult.restype = c_int
 
-# C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 128
+# /home/mau/github/EPANET/tools/outputapi/outputapi.h: 128
 if hasattr(_libs['outputapi'], 'ENR_free'):
     ENR_free = _libs['outputapi'].ENR_free
     ENR_free.argtypes = [POINTER(c_float)]
     ENR_free.restype = c_int
 
-# C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 129
+# /home/mau/github/EPANET/tools/outputapi/outputapi.h: 129
 if hasattr(_libs['outputapi'], 'ENR_close'):
     ENR_close = _libs['outputapi'].ENR_close
     ENR_close.argtypes = [POINTER(POINTER(ENResultsAPI))]
     ENR_close.restype = c_int
 
-# C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 130
+# /home/mau/github/EPANET/tools/outputapi/outputapi.h: 130
 if hasattr(_libs['outputapi'], 'ENR_errMessage'):
     ENR_errMessage = _libs['outputapi'].ENR_errMessage
     ENR_errMessage.argtypes = [c_int, String, c_int]
     ENR_errMessage.restype = c_int
 
-# C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 11
+# /home/mau/github/EPANET/tools/outputapi/outputapi.h: 11
 try:
     MAXFNAME = 259
 except:
     pass
 
-# C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 12
+# /home/mau/github/EPANET/tools/outputapi/outputapi.h: 12
 try:
     MAXTITLE = 3
 except:
     pass
 
-# C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 14
+# /home/mau/github/EPANET/tools/outputapi/outputapi.h: 14
 try:
     MAXID = 31
 except:
     pass
 
-# C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 15
+# /home/mau/github/EPANET/tools/outputapi/outputapi.h: 15
 try:
     MAXMSG = 79
 except:
     pass
 
-# C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 16
+# /home/mau/github/EPANET/tools/outputapi/outputapi.h: 16
 try:
     NNODERESULTS = 4
 except:
     pass
 
-# C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 17
+# /home/mau/github/EPANET/tools/outputapi/outputapi.h: 17
 try:
     NLINKRESULTS = 8
 except:
     pass
 
-ENResultsAPI = struct_ENResultsAPI # C:\\Users\\cingim\\Documents\\GitHub\\EPANET\\tools\\outputapi\\outputapi.h: 23
+ENResultsAPI = struct_ENResultsAPI # /home/mau/github/EPANET/tools/outputapi/outputapi.h: 23
 
 # No inserted files
 
